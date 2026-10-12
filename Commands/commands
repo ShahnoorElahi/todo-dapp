@@ -1,0 +1,33 @@
+cd C:\Users\Home\Desktop\Blockchain
+mkdir todo-dapp
+cd todo-dapp
+code .
+
+npm init -y
+npm install --save-dev hardhat
+npx.cmd hardhat --init
+
+npx.cmd hardhat test
+
+npx.cmd hardhat run scripts/deploy.ts --network localhost
+
+npx.cmd create-next-app@latest frontend
+
+cd ./frontend
+
+npm install ethers
+
+npm run dev
+
+C:\Users\Home\Desktop\Blockchain\todo-dapp> 
+New-Item -ItemType Directory -Force -Path "frontend\src\contracts"
+New-Item -ItemType Directory -Force -Path "frontend\src\lib"
+
+Copy-Item "artifacts\contracts\Todo.sol\Todo.json" "frontend\src\contracts\Todo.json"
+
+Cannot find module '@/contracts/Todo.json' or its corresponding type declarations.
+Step 1: Fix the alias
+In frontend/tsconfig.json, change it to:
+"paths": {
+  "@/*": ["./src/*"]
+}
